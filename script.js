@@ -115,13 +115,13 @@ function getPasswordOptions() {
       var containUpperCase = confirm("Should your password contain an uppercase?");
       var containNumber = confirm("Should your password contain a number?");
       var containSpecialChar =  confirm("Should your password contain a special character?"); 
-    }
-    if(!containLowerCase && !containUpperCase && !containNumber && !containSpecialChar){
+      if(!containLowerCase && !containUpperCase &&  !containNumber && !containSpecialChar){
         alert("Your password must contain at least one character type")
-    }
-    else{
+      }
+      else{
       alert("Thank you")
-    }
+      }
+  }
 }
 
 // Function for getting a random element from an array
