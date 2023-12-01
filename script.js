@@ -1,3 +1,6 @@
+//Global variables
+
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -129,7 +132,7 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  return arr[Math.floor(Math.random()*arr.length)]
 }
 
 // Function to generate password with user input
