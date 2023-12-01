@@ -101,7 +101,7 @@ function getPasswordOptions() {
     else if(userInput < 8){
       alert(userInput + " is less than 8. Please enter a number between 8 and 128.")
     }
-    //If a number is more than 128, alert the user
+    //Else if a number is more than 128, alert the user
     else if(userInput > 128){
       alert(userInput + " is greater than 128. Please enter a number between 8 and 128.")
     }
@@ -109,15 +109,18 @@ function getPasswordOptions() {
     else if(isNaN(userInput)){
       alert(userInput + " is not a number. Please enter a number between 8 and 128.")
     }
-    //if number between 8 and 128 entered, use confirm methods, so the user chooses from character types
+    //If number between 8 and 128 entered, confirm methods are used, so the user chooses from character types
     else{
       var containLowerCase = confirm("Should your password contain a lowercase?");
       var containUpperCase = confirm("Should your password contain an uppercase?");
       var containNumber = confirm("Should your password contain a number?");
-      var containSpecialChar =  confirm("Should your password contain a special character?"); 
+      var containSpecialChar =  confirm("Should your password contain a special character?");
+      
+      //At least one character type has to be chosen. If no character type is chosen, alert the user
       if(!containLowerCase && !containUpperCase &&  !containNumber && !containSpecialChar){
         alert("Your password must contain at least one character type")
       }
+      //If at least one character type is chosen, generatePassword() function is called
       else{
       alert("Thank you")
       }
