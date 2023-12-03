@@ -1,4 +1,9 @@
 //Global variables
+var userInput;
+var containLowerCase;
+var containUpperCase;
+var containNumber;
+var containSpecialChar;
 
 
 // Array of special characters to be included in password
@@ -94,7 +99,7 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
   //Length of password prompt, between 8 and 128 characters
-  var userInput = prompt("How many characters should you password have? Please enter a number between 8 and 128.")
+  userInput = prompt("How many characters should you password have? Please enter a number between 8 and 128.")
     //Validate if the user has entered any value. If not, alert the user
     if(!userInput){
       alert("No value was entered. Please enter a number between 8 and 128.")
@@ -114,18 +119,14 @@ function getPasswordOptions() {
     }
     //If number between 8 and 128 entered, confirm methods are used, so the user chooses from character types
     else{
-      var containLowerCase = confirm("Should your password contain a lowercase?");
-      var containUpperCase = confirm("Should your password contain an uppercase?");
-      var containNumber = confirm("Should your password contain a number?");
-      var containSpecialChar =  confirm("Should your password contain a special character?");
+      containLowerCase = confirm("Should your password contain a lowercase?");
+      containUpperCase = confirm("Should your password contain an uppercase?");
+      containNumber = confirm("Should your password contain a number?");
+      containSpecialChar =  confirm("Should your password contain a special character?");
       
       //At least one character type has to be chosen. If no character type is chosen, alert the user
       if(!containLowerCase && !containUpperCase &&  !containNumber && !containSpecialChar){
         alert("Your password must contain at least one character type")
-      }
-      //If at least one character type is chosen, generatePassword() function is called
-      else{
-      alert("Thank you")
       }
   }
 }
@@ -137,8 +138,32 @@ function getRandom(array) {
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();
+  var newArray = [""];
+  if (containLowerCase){
+    newArray = lowerCasedCharacters
+  }
+  if (containUpperCase){
+    newArray = newArray.concat(upperCasedCharacters)
+  }
+  if(containNumber){
+    newArray = newArray.concat(numericCharacters)
+  }
+  if(containSpecialChar){
+    newArray = newArray.concat(specialCharacters)
+  }
+  console.log(newArray);
+  
+  var pass = [""];
 
-}
+  for(var i = 0; i < userInput; i++){
+    var char = getRandom(newArray);
+    pass.push(char);
+  }
+  return pass.join("");
+
+} 
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -147,7 +172,6 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
   passwordText.value = password;
 }
 
