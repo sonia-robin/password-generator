@@ -29,6 +29,7 @@ Once prompts are answered and validated, the password is generated and written t
 N/A
 
 ## Link to the deployed application
+https://sonia-robin.github.io/password-generator/
 
 ## Credits
 N/A
