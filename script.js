@@ -136,10 +136,20 @@ function getRandom(array) {
   return array[Math.floor(Math.random()*array.length)]
 }
 
+function isCharInArray(arr1, arr2){
+  for(var i = 0; i < arr1.length; i++){
+    var char = arr1[i]
+    if(arr2.includes(char)){
+      return true
+    }
+  }
+  return false
+}
+
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
-  var newArray = [""];
+  var newArray = [];
   if (containLowerCase){
     newArray = lowerCasedCharacters
   }
@@ -154,12 +164,43 @@ function generatePassword() {
   }
   console.log(newArray);
   
-  var pass = [""];
+  var pass = [];
 
   for(var i = 0; i < userInput; i++){
     var char = getRandom(newArray);
     pass.push(char);
+    if(pass.length == userInput-4){
+      if (containLowerCase){
+        var verifLower = isCharInArray(pass,lowerCasedCharacters)
+        if(!verifLower){
+          pass.push(getRandom(lowerCasedCharacters))
+          i++
+        }
+      }
+      if (containUpperCase){
+        var verifUpper = isCharInArray(pass,upperCasedCharacters)
+        if(!verifUpper){
+          pass.push(getRandom(upperCasedCharacters))
+          i++
+        }
+      }
+      if(containNumber){
+        var verifNumber = isCharInArray(pass,numericCharacters)
+        if(!verifNumber){
+          pass.push(getRandom(numericCharacters))
+          i++
+        }
+      }
+      if(containSpecialChar){
+        var verifSpecial = isCharInArray(pass,specialCharacters)
+        if(!verifSpecial){
+          pass.push(getRandom(specialCharacters))
+          i++
+        }
+      }
+    }
   }
+  
   return pass.join("");
 
 } 
