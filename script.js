@@ -187,7 +187,7 @@ function generatePassword() {
     var char = getRandom(newArray);
     pass.push(char);
     // If statement to check, if the password contains the chosen char types. Function isCharInArray is used and if it returns false, the relevant character is added to the pass array
-    if (pass.length == userInput - 4) {
+    if (pass.length == userInput - 3) {
       if (containLowerCase) {
         if (!isCharInArray(pass, lowerCasedCharacters)) {
           pass.push(getRandom(lowerCasedCharacters));
